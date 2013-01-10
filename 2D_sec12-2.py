@@ -12,7 +12,7 @@ eV2J  = 1.6e-19      # Energy conversion factors
 J2eV  = 1/eV2J
 
 del_x = 2.e-10       # The cells size
-dt    = .1e-16       # Time steps
+dt    = .1e-15       # Time steps
 ra    = (0.5*hbar/melec)*(dt/del_x**2) # ra must be < .1
 print "Stability criteria ra: %2e" % ra
 DX    = del_x * 1e9
@@ -49,10 +49,10 @@ V = np.zeros((NN,NN))
     # V(n,m) = eV2J *.1
 
 # HO potential
-k0 = 0.005
-for m in range(1,NN):
-    for n in range(1,NN):
-        V[n,m] = k0*((NC-n)**2 + (MC-m)**2)*del_x**2
+# k0 = 0.005
+# for m in range(1,NN):
+#     for n in range(1,NN):
+#         V[n,m] = k0*((NC-n)**2 + (MC-m)**2)*del_x**2
 
 fig = plt.figure()
 # print XX.shape
@@ -189,4 +189,5 @@ ax6.set_xlabel('E (meV)')
 ax6.set_ylabel('FFT (Psi)')
 ax6.set_xlim(0,50)
 ax6.set_ylim(0,1.1*Pmax)
+plt.savefig('Se2d-find-E-Inf-well.png')
 plt.show()
